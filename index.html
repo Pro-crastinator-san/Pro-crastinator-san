@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sanraku — Software Engineer</title>
+<meta name="description" content="Portfolio of Sanraku, a software engineer building fast systems and interfaces people enjoy using.">
+<meta name="theme-color" content="#12163A">
+<script>try{var t=localStorage.getItem("theme")}catch(e){}document.documentElement.dataset.theme=t||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark")</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Shippori+Mincho+B1:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pad:clamp(1.25rem,5vw,4rem);
+  --serif:"Shippori Mincho B1","Hiragino Mincho ProN",Georgia,serif;
+}
+:root,:root[data-theme=dark]{--ink:#12163A;--moon:#E9ECFF;--mute:#9AA0C8;--sakura:#FF9EB5;--lav:#A99CFF;--line:rgba(233,236,255,.16);--hl:linear-gradient(90deg,rgba(255,158,181,.18),rgba(169,156,255,.05));--sun1:rgba(255,158,181,.32);--sun2:rgba(169,156,255,.08);--m1:rgba(169,156,255,.16);--m2:rgba(255,158,181,.14);color-scheme:dark}
+:root[data-theme=light]{--ink:#F4F2FF;--moon:#1B1E4B;--mute:#565C8C;--sakura:#C42A5F;--lav:#6C5CE7;--line:rgba(27,30,75,.16);--hl:linear-gradient(90deg,rgba(196,42,95,.12),rgba(108,92,231,.04));--sun1:rgba(255,150,120,.6);--sun2:rgba(255,200,160,.2);--m1:rgba(108,92,231,.18);--m2:rgba(196,42,95,.16);color-scheme:light}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--moon);font:400 1.05rem/1.65 "Hanken Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--sakura);outline-offset:4px;border-radius:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Hero */
+.hero{position:relative;height:100svh;min-height:560px;overflow:hidden}
+#c{position:absolute;inset:0;width:100%;height:100%;display:block}
+.art{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.sun{position:absolute;left:50%;bottom:12%;width:min(56vw,620px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 40%,var(--sun1),var(--sun2) 72%);animation:sunrise 2.6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes sunrise{from{transform:translateY(45%);opacity:0}to{transform:none;opacity:1}}
+.mts{position:absolute;left:0;bottom:-1px;width:100%;height:42%}
+.mts path:nth-child(1){fill:var(--m1)}.mts path:nth-child(2){fill:var(--m2)}.mts path:nth-child(3){fill:var(--ink)}
+.tg{background:none;border:1px solid var(--line);color:var(--moon);width:2.2rem;height:2.2rem;border-radius:50%;display:grid;place-items:center;cursor:pointer;transition:border-color .2s}
+.tg:hover{border-color:var(--moon)}
+nav{position:absolute;top:0;left:0;right:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:1.5rem var(--pad);font-size:.95rem}
+nav ul{display:flex;align-items:center;gap:1.75rem;list-style:none}
+nav a{text-decoration:none;color:var(--mute);transition:color .2s}
+nav a:hover{color:var(--moon)}
+.status{display:flex;align-items:center;gap:.6rem;color:var(--moon)}
+.status i{width:.5rem;height:.5rem;border-radius:50%;background:var(--sakura);box-shadow:0 0 0 4px rgba(255,158,181,.2)}
+.intro{position:absolute;z-index:2;left:var(--pad);right:var(--pad);bottom:clamp(2rem,9vh,5rem);display:flex;justify-content:space-between;align-items:end;gap:2rem;flex-wrap:wrap}
+.intro p{max-width:30ch;font-size:clamp(1.15rem,2vw,1.5rem);line-height:1.4}
+.btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:999px;text-decoration:none;font-weight:500;border:1px solid var(--line);transition:background .25s,color .25s,border-color .25s}
+.btn.primary{background:var(--sakura);color:var(--ink);border-color:var(--sakura)}
+.btn.primary:hover{background:var(--moon);border-color:var(--moon)}
+.btn:not(.primary):hover{border-color:var(--moon)}
+.rise{opacity:0;animation:rise .9s 1.7s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* Sections */
+section{max-width:1200px;margin:0 auto;padding:clamp(4rem,10vw,8rem) var(--pad)}
+h2{font:700 clamp(2rem,4.5vw,3.5rem)/1.1 var(--serif);margin-bottom:.75rem}
+.lede{color:var(--mute);max-width:46ch;margin-bottom:3rem}
+
+/* Work */
+.row{position:relative;display:grid;grid-template-columns:1.7fr 1fr auto;gap:2rem;align-items:center;padding:2.25rem 1rem;border-top:1px solid var(--line);text-decoration:none;overflow:hidden;isolation:isolate}
+.row:last-child{border-bottom:1px solid var(--line)}
+.row::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--hl);transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.row:hover::before,.row:focus-visible::before{transform:scaleX(1)}
+.row h3{font:700 clamp(1.5rem,2.6vw,2.1rem)/1.15 var(--serif);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.row:hover h3,.row:focus-visible h3{transform:translateX(.6rem)}
+.row p{color:var(--mute);margin-top:.35rem;max-width:44ch}
+.stack{color:var(--moon);font-size:.95rem}
+.metric{text-align:right;min-width:9rem}
+.metric b{display:block;font:700 clamp(1.8rem,3vw,2.6rem)/1 var(--serif);color:var(--sakura)}
+.metric span{font-size:.85rem;color:var(--mute)}
+
+/* About */
+.about{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(2rem,6vw,5rem)}
+.about p{margin-bottom:1.25rem;max-width:56ch}
+.tl{list-style:none;margin-top:2.25rem;border-left:1px solid var(--line)}
+.tl li{position:relative;padding:0 0 1.6rem 1.5rem}
+.tl li::before{content:"";position:absolute;left:-5px;top:.55rem;width:9px;height:9px;border-radius:50%;background:var(--sakura)}
+.tl time{display:block;color:var(--mute);font-size:.9rem}
+.tl b{font-weight:600}.tl span{display:block;color:var(--mute)}
+
+/* Skills */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
+.group h3{font:700 1.35rem/1.2 var(--serif);margin-bottom:1.25rem}
+.group ul{list-style:none}.group li{margin-bottom:1.1rem}
+.group li span{display:block;font-size:.95rem;margin-bottom:.4rem}
+.bar{height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--sakura),var(--lav));transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.skills.in .bar i{transform:scaleX(var(--w))}
+.tools{margin-top:3rem;color:var(--mute)}.tools b{color:var(--moon);font-weight:500}
+
+/* Form */
+.mf{display:grid;gap:1rem;align-content:start}
+.mf label{display:grid;gap:.4rem;color:var(--mute);font-size:.9rem}
+.mf input,.mf textarea{font:inherit;color:var(--moon);background:transparent;border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;resize:vertical}
+.mf button{justify-self:start;cursor:pointer;font:inherit;font-weight:500}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2rem,5vw,4rem);padding-bottom:3rem}
+.mail{display:inline-block;font:700 clamp(1.3rem,2.8vw,2.3rem)/1.2 var(--serif);text-decoration:none;background:linear-gradient(var(--sakura),var(--sakura)) 0 100%/100% 2px no-repeat;padding-bottom:.2rem;transition:background-size .4s cubic-bezier(.2,.8,.2,1),color .3s;word-break:break-all}
+.mail:hover{background-size:100% 100%;color:var(--ink)}
+.actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-top:2rem}
+.actions button{font:inherit;cursor:pointer;background:none;color:var(--moon)}
+.links{display:flex;gap:1.5rem}
+.links a{color:var(--mute);text-decoration:none}
+.links a:hover{color:var(--moon)}
+footer{max-width:1200px;margin:0 auto;padding:2rem var(--pad) 3rem;color:var(--mute);font-size:.9rem;border-top:1px solid var(--line)}
+
+@media (max-width:760px){
+  nav{font-size:.85rem}
+  nav ul{gap:.85rem}
+  .row{grid-template-columns:1fr;gap:1rem;padding:1.75rem .5rem}
+  .metric{text-align:left}
+  .about{grid-template-columns:1fr}
+  .skills,.contact{grid-template-columns:1fr}
+  .status span{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rise{animation:none;opacity:1}
+  .row::before,.row h3,.mail{transition:none}
+  .sun{animation:none}
+  .bar i{transform:scaleX(var(--w));transition:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="art" aria-hidden="true">
+    <div class="sun"></div>
+    <svg class="mts" viewBox="0 0 1440 400" preserveAspectRatio="none">
+      <path d="M0 260 L180 170 L300 230 L480 120 L640 240 L820 150 L980 250 L1180 140 L1320 220 L1440 180 V400 H0Z"/>
+      <path d="M0 320 L140 250 L320 310 L520 210 L720 300 L900 230 L1120 320 L1300 250 L1440 300 V400 H0Z"/>
+      <path d="M0 372 L220 335 L460 366 L700 338 L960 370 L1200 342 L1440 366 V400 H0Z"/>
+    </svg>
+  </div>
+  <canvas id="c" aria-hidden="true"></canvas>
+  <h1 class="sr">Sanraku — Software Engineer</h1>
+  <nav class="rise">
+    <div class="status"><i></i><span>Open to new roles</span></div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><button class="tg" id="theme" type="button"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg></button></li>
+    </ul>
+  </nav>
+  <div class="intro rise">
+    <p>Software engineer building fast systems and the interfaces people enjoy using.</p>
+    <div class="btns">
+      <a class="btn primary" href="#projects">See my projects</a>
+      <a class="btn" href="#contact">Say hello</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="about" class="about">
+  <h2>About</h2>
+  <div>
+    <p>I’m a software engineer who likes the hard middle of a problem: the part where performance, correctness and usability pull in different directions. I’ve led small teams, mentored new engineers, and shipped systems that other people depend on every day.</p>
+    <p>I write down decisions, measure before I optimize, and leave code easier to change than I found it.</p>
+    <ol class="tl">
+      <li><time>2023 to now</time><b>Staff Engineer, Northwind Labs</b><span>Lead a team of seven on the streaming platform.</span></li>
+      <li><time>2020 to 2023</time><b>Senior Engineer, Hanami Systems</b><span>Built the real-time collaboration stack.</span></li>
+      <li><time>2017 to 2020</time><b>Software Engineer, Orbit Works</b><span>Shipped the first design system and component library.</span></li>
+      <li><time>2017</time><b>B.S. Computer Science, with honors</b></li>
+    </ol>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <p class="lede">The tools I reach for most, and how deep I go with each.</p>
+  <div class="skills" id="skills-grid"></div>
+  <p class="tools"><b>Also comfortable with</b> Docker, Terraform, GitHub Actions, Linux, Git and Figma.</p>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <p class="lede">Six projects, from low-level infrastructure to the interface on top. Each one shipped and runs in production.</p>
+
+  <a class="row" href="#">
+    <div><h3>Quillstream</h3><p>An event streaming engine in Rust that replaced a three-service Kafka pipeline with one binary.</p></div>
+    <div class="stack">Rust, io_uring, Raft, gRPC</div>
+    <div class="metric"><b>2.1M</b><span>events per second, one node</span></div>
+  </a>
+  <a class="row" href="#">
+    <div><h3>Kōdō</h3><p>A collaborative code editor with conflict-free sync, so teams can type in the same file without stepping on each other.</p></div>
+    <div class="stack">TypeScript, CRDTs, WebSockets, React</div>
+    <div class="metric"><b>38 ms</b><span>p95 sync latency, 40k users</span></div>
+  </a>
+  <a class="row" href="#">
+    <div><h3>Tidewatch</h3><p>A flood forecasting model for coastal cities that gives emergency teams two days of warning.</p></div>
+    <div class="stack">Python, PyTorch, PostGIS, FastAPI</div>
+    <div class="metric"><b>92%</b><span>accuracy at 48 hours, 14 cities</span></div>
+  </a>
+  <a class="row" href="#">
+    <div><h3>Lumen</h3><p>An accessible design system with a component library that product teams adopt in an afternoon.</p></div>
+    <div class="stack">TypeScript, Web Components, Storybook</div>
+    <div class="metric"><b>64</b><span>components, all WCAG AA</span></div>
+  </a>
+  <a class="row" href="#">
+    <div><h3>Hanabi</h3><p>A WebGPU particle renderer for data visualization that stays smooth where canvas libraries stall.</p></div>
+    <div class="stack">WebGPU, WGSL, TypeScript</div>
+    <div class="metric"><b>1M</b><span>particles at 60 fps</span></div>
+  </a>
+  <a class="row" href="#">
+    <div><h3>Kiri</h3><p>A command-line tool that stacks and reviews pull requests, adopted across the engineering org.</p></div>
+    <div class="stack">Go, Git internals, GitHub API</div>
+    <div class="metric"><b>40%</b><span>faster review turnaround</span></div>
+  </a>
+</section>
+
+<section id="contact" class="contact">
+  <div>
+    <h2>Let’s build something good together.</h2>
+    <p class="lede">I reply to every message within two days.</p>
+    <a class="mail" id="mail" href="mailto:sanraku@example.com">sanraku@example.com</a>
+    <div class="actions">
+      <button class="btn" id="copy" type="button">Copy email</button>
+      <span class="sr" id="live" aria-live="polite"></span>
+      <div class="links">
+        <a href="https://github.com/your-username">GitHub</a>
+        <a href="https://linkedin.com/in/your-username">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+  <form class="mf" id="mf">
+    <label>Your name<input name="n" required autocomplete="name"></label>
+    <label>Message<textarea name="m" rows="5" required></textarea></label>
+    <button class="btn primary" type="submit">Send email</button>
+  </form>
+</section>
+</main>
+
+<footer>© 2026 Sanraku. Built by hand with HTML, CSS and a canvas.</footer>
+
+<script>
+(() => {
+  const cv = document.getElementById('c'), ctx = cv.getContext('2d');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const FONT = '"Shippori Mincho B1","Hiragino Mincho ProN",Georgia,serif';
+  const NB = 20, root = document.documentElement;
+  let W, H, ps = [], buckets = [], mx = -999, my = -999, frame = 0, rad = 0, looping = false, visible = true, lastW = 0;
+
+  function build() {
+    const dpr = Math.min(devicePixelRatio || 1, 2), r = cv.getBoundingClientRect();
+    W = Math.round(r.width); H = Math.round(r.height); lastW = W;
+    cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const o = document.createElement('canvas'); o.width = W; o.height = H;
+    const x = o.getContext('2d', { willReadFrequently: true });
+    x.font = '700 100px ' + FONT;
+    const fs = Math.min(100 * (W * .88) / x.measureText('Sanraku').width, H * .46);
+    x.font = '700 ' + fs + 'px ' + FONT;
+    x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillStyle = '#fff';
+    x.fillText('Sanraku', W / 2, H * .44);
+    const d = x.getImageData(0, 0, W, H).data;
+
+    const step = Math.max(3, Math.round(fs / 55));
+    rad = Math.max(1.1, step * .34);
+    ps = []; buckets = Array.from({ length: NB }, () => []);
+    for (let y = 0; y < H; y += step) for (let px = 0; px < W; px += step) {
+      if (d[(y * W + px) * 4 + 3] > 128) {
+        const p = { x: Math.random() * W, y: Math.random() * H, tx: px, ty: y, vx: 0, vy: 0, d: px / W * 55 };
+        ps.push(p); buckets[Math.min(NB - 1, Math.floor(px / W * NB))].push(p);
+        if (reduce) { p.x = px; p.y = y; }
+      }
+    }
+    frame = 0;
+    draw();
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    for (let i = 0; i < NB; i++) {
+      ctx.fillStyle = 'hsl(' + (348 - 99 * i / (NB - 1)) + (root.dataset.theme === 'light' ? ',85%,50%)' : ',100%,80%)');
+      ctx.beginPath();
+      for (const p of buckets[i]) { ctx.moveTo(p.x + rad, p.y); ctx.arc(p.x, p.y, rad, 0, 6.2832); }
+      ctx.fill();
+    }
+  }
+
+  function tick() {
+    frame++;
+    const R = Math.max(70, W * .08), R2 = R * R;
+    for (const p of ps) {
+      if (frame < p.d) continue;
+      p.vx += (p.tx - p.x) * .035; p.vy += (p.ty - p.y) * .035;
+      const dx = p.x - mx, dy = p.y - my, q = dx * dx + dy * dy;
+      if (q < R2 && q > 0.01) { const dist = Math.sqrt(q), f = (1 - dist / R) * 5; p.vx += dx / dist * f; p.vy += dy / dist * f; }
+      p.vx *= .86; p.vy *= .86; p.x += p.vx; p.y += p.vy;
+    }
+    draw();
+    if (visible) requestAnimationFrame(tick); else looping = false;
+  }
+  function start() { if (!reduce && !looping) { looping = true; requestAnimationFrame(tick); } }
+
+  const hero = cv.parentElement;
+  hero.addEventListener('pointermove', e => { const r = cv.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; });
+  hero.addEventListener('pointerleave', () => { mx = my = -999; });
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible) start(); }).observe(hero);
+
+  let t; addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { if (Math.round(cv.getBoundingClientRect().width) !== lastW) { build(); start(); } }, 200); });
+
+  Promise.race([document.fonts.load('700 100px "Shippori Mincho B1"', 'Sanraku'), new Promise(r => setTimeout(r, 1500))])
+    .then(() => { build(); start(); });
+
+  // Theme toggle
+  const tg = document.getElementById('theme');
+  const label = () => tg.setAttribute('aria-label', 'Switch to ' + (root.dataset.theme === 'light' ? 'dark' : 'light') + ' mode');
+  label();
+  tg.addEventListener('click', () => {
+    const n = root.dataset.theme === 'light' ? 'dark' : 'light';
+    root.dataset.theme = n;
+    try { localStorage.setItem('theme', n); } catch (e) {}
+    label(); if (W) draw();
+  });
+
+  // Skills
+  const sk = [
+    ['Languages', [['Rust', 95], ['TypeScript', 92], ['Python', 88], ['Go', 80]]],
+    ['Frontend and design', [['React', 90], ['Web Components', 85], ['Accessibility', 92], ['Canvas and WebGL', 82]]],
+    ['Systems', [['Distributed systems', 90], ['PostgreSQL', 88], ['Observability', 85], ['Kubernetes', 78]]]
+  ];
+  const g = document.getElementById('skills-grid');
+  g.innerHTML = sk.map(([t, l]) => '<div class="group"><h3>' + t + '</h3><ul>' + l.map(([n, v], j) =>
+    '<li><span>' + n + '</span><div class="bar" aria-hidden="true"><i style="--w:' + v / 100 + ';transition-delay:' + j * .1 + 's"></i></div></li>').join('') + '</ul></div>').join('');
+  new IntersectionObserver((e, o) => { if (e[0].isIntersecting) { g.classList.add('in'); o.disconnect(); } }, { threshold: .25 }).observe(g);
+
+  // Contact form opens the visitor's email app
+  document.getElementById('mf').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = e.target.elements, a = document.getElementById('mail').textContent.trim();
+    location.href = 'mailto:' + a + '?subject=' + encodeURIComponent('Hello from ' + f.n.value) + '&body=' + encodeURIComponent(f.m.value);
+  });
+
+  // Copy email
+  const btn = document.getElementById('copy'), live = document.getElementById('live');
+  btn.addEventListener('click', async () => {
+    const addr = document.getElementById('mail').textContent.trim();
+    try { await navigator.clipboard.writeText(addr); btn.textContent = 'Copied'; live.textContent = 'Email copied'; }
+    catch { btn.textContent = 'Press Ctrl+C to copy'; }
+    setTimeout(() => { btn.textContent = 'Copy email'; }, 2000);
+  });
+})();
+</script>
+</body>
+</html>
